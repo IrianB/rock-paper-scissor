@@ -15,97 +15,110 @@ function playRound(humanChoice, computerChoice) {
         humanChoice = humanChoice.toUpperCase();
         computerChoice = getComputerChoice();
         let i = 0;
+        let a = document.createElement("p");
 
 
         switch (humanChoice) {
             case "ROCK":
                 i = 1;
                 if (i === computerChoice) {
-                    console.log("It's a Tie.");
+                    a.textContent = "It's a Tie.";
                 } else if (i < computerChoice && computerChoice !== 2) {
-                    console.log("You Win.");
+                    a.textContent = "You Win.";
                     humanScore++;
                 } else {
-                    console.log("You Lose.");
+                    a.textContent = "You Lose.";
                     computerScore++;
                 }
                 break;
             case "PAPER":
                 i = 2;
                 if (i === computerChoice) {
-                    console.log("It's a Tie.");
+                    a.textContent =  "It's a Tie.";
                 } else if (i > computerChoice && computerChoice !== 3) {
-                    console.log("You Win.");
+                    a.textContent = "You Win.";
                     humanScore++;
                 } else {
-                    console.log("You Lose.");
+                    a.textContent = "You Lose.";
                     computerScore++;
                 }
                 break;
             case "SCISSOR":
                 i = 3;
                 if (i === computerChoice) {
-                    console.log("It's a Tie.");
+                    a.textContent = "It's a Tie.";
                 } else if (i > computerChoice && computerChoice !== 1) {
-                    console.log("You Win.");
+                    a.textContent = "You Win.";
                     humanScore++;
                 } else {
-                    console.log("You Lose.");
+                    a.textContent = "You Lose.";
                     computerScore++;
                 }
                 break;
         }
+        content.appendChild(a);
 
         humanDecision(i);
         computerDecision(computerChoice);
-        console.log(`Human Score: ${humanScore}`);
-        console.log(`Computer Score: ${computerScore}`);
-        console.log("");
+       
+        let b = document.createElement('p');
+        b.textContent =` Human Score: ${humanScore}`;
+        b.textContent +=` Computer Score: ${computerScore}`;
+        content.appendChild(b);
 
         rounds--;
     };
-
+    
+    let b = document.createElement('p');
     if (humanScore > computerScore)
-        return "All in all the Humans win for now.";
+        b.textContent = "All in all the Humans win for now.";
     else if (humanScore < computerScore)
-        return "The computer wins, AI will take over.";
+        b.textContent = "The computer wins, AI will take over.";
     else {
-        return "Computer and Humans are equal.";
+        b.textContent = "Computer and Humans are equal.";
     }
+    content.appendChild(b);
 
 }
 
 function humanDecision(decision) {
+    let a = document.createElement("p");
     switch (decision) {
         case 1:
-            console.log("You choose Rock.");
+            a.textContent = "You choose Rock.";
             break;
         case 2:
-            console.log("You choose Paper.");
+            a.textContent = "You choose Paper.";
             break;
         case 3:
-            console.log("You choose Scissor.");
+            a.textContent = "You choose Scissor.";
             break;
     }
+    content.appendChild(a);
 }
 
 function computerDecision(decision) {
+    let a = document.createElement("p");
     switch (decision) {
         case 1:
-            console.log("The computer choses Rock.");
+            a.textContent = "The computer choses Rock.";
             break;
         case 2:
-            console.log("The computer choses Paper.");
+            a.textContent = "The computer choses Paper.";
             break;
         case 3:
-            console.log("The computer choses Scissor.");
+            a.textContent = "The computer choses Scissor.";
             break;
     }
+    content.appendChild(a);
 }
 
 let humanScore = 0;
 let computerScore = 0;
+let play = document.querySelector("#play");
+let content = document.querySelector("#content");
 
-console.log(playRound());
+play.addEventListener("click", playRound);
+
 
 
